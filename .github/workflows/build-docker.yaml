@@ -45,7 +45,7 @@ jobs:
           IFS='.' read -r major minor patch <<< "${latest_tag#v}"
           new_tag="v${major}.${minor}.$((patch + 1))"
 
-          branch="${GITHUB_REF_NAME}"
+          branch="${{ github.ref_name }}"
           safe_branch=$(echo "$branch" | tr '/' '-' | tr -cd '[:alnum:]._-')
 
           if [ "$safe_branch" != "main" ]; then
